@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.mapper.CategoryMapper">
+
+
+
+    <select id="list" resultType="com.sky.entity.Category">
+
+        <!-- 使用动态SQL -->
+        <choose>
+            <!-- 如果type参数不为空，则执行带有参数的查询 -->
+            <when test="type != null">
+                select * from category where type=#{type}
+            </when>
+            <!-- 如果type参数为空，则执行没有参数的查询 -->
+            <otherwise>
+                select * from category
+            </otherwise>
+        </choose>
+    </select>
+    <select id="pageQuery" resultType="com.sky.entity.Category">
+        select * from category
+        <where>
+            <if test="name != null and name != ''">
+                and name like concat('%',#{name},'%')
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+        </where>
+        order by sort asc , create_time desc
+    </select>
+
+</mapper>
+

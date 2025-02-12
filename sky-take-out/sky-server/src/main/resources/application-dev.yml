@@ -1,0 +1,16 @@
+sky:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: localhost
+    port: 3306
+    database: sky_take_out
+    username: root
+    password: 123456
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    #微信小程序的JWT令牌配置
+  wechat:
+    appid: wx09090529f3fb7f22
+    secret: 07dca9fa757e20cbfe95970b37db3ecb
